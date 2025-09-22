@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Detail</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .card p {
+            margin: 8px 0;
+        }
+        .actions {
+            margin-top: 20px;
+        }
+        .actions a {
+            text-decoration: none;
+            padding: 10px 15px;
+            margin-right: 5px;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .btn-primary { background-color: #4361ee; }
+        .btn-danger { background-color: #f94144; }
+        .btn-secondary { background-color: #6c757d; }
+        .btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>{{ contact.name }}</h2>
+            <p><strong>Email:</strong> {{ contact.email }}</p>
+            <p><strong>Phone:</strong> {{ contact.phone }}</p>
+            <p><strong>Address:</strong> {{ contact.address }}</p>
+
+            <div class="actions">
+                <a href="{% url 'contact_update' contact.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'contact_delete' contact.pk %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'contact_list' %}" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

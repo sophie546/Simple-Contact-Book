@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container">
+    <div class="card">
+        <h2>{% if form.instance.pk %}Edit Contact{% else %}Add Contact{% endif %}</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="{% url 'contact_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

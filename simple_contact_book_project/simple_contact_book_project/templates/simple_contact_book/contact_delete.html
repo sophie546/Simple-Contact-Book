@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container">
+    <div class="card">
+        <h2>Delete Contact</h2>
+        <p>Are you sure you want to delete <strong>{{ contact.name }}</strong>?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'contact_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

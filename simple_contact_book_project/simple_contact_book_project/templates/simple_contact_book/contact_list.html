@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="container">
+    <h1>Contact List</h1>
+    <a href="{% url 'contact_create' %}" class="btn btn-success add-contact-btn">Add Contact</a>
+
+    <ul class="contact-list">
+        {% for contact in contacts %}
+            <li>
+                <div class="contact-info">
+                    <span class="contact-name">{{ contact.name }}</span>
+                    <span class="contact-details">{{ contact.phone }} | {{ contact.email }}</span>
+                </div>
+                <div class="actions">
+                    <a href="{% url 'contact_detail' contact.pk %}" class="btn btn-primary">View</a>
+                    <a href="{% url 'contact_update' contact.pk %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'contact_delete' contact.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+            </li>
+        {% empty %}
+            <li class="empty-state">
+                <h3>No contacts found.</h3>
+                <p>Add new contacts to see them here.</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
